@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:checkable="false"
+            android:id="@+id/menu_write_blog"
+            android:title="写博客"/>
+        <item
+            android:checkable="false"
+            android:id="@+id/menu_begin_quit"
+            android:title="开始离线"/>
+        <item
+            android:checkable="false"
+            android:id="@+id/menu_quit"
+            android:title="退出" />
+    </group>
+</menu>

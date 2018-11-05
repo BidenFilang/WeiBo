@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_weibo"
+            android:icon="@mipmap/ic_weibo_grey"
+            android:title="微博"
+            />
+        <item
+            android:id="@+id/nav_notice"
+            android:icon="@mipmap/ic_notification_gray_24"
+            android:title="通知"/>
+        <item
+            android:id="@+id/nav_collection"
+            android:icon="@mipmap/ic_unfavorite_dark"
+            android:title="收藏"/>
+        <item
+            android:id="@+id/nav_private_msg"
+            android:icon="@mipmap/ic_email_grey600_24dp"
+            android:title="私信"/>
+    </group>
+
+    <group android:checkableBehavior="single" >
+        <item
+            android:id="@+id/nav_hot_weibo"
+            android:icon="@null"
+            android:title="热门微博"/>
+        <item
+            android:id="@+id/nav_hot_topic"
+            android:icon="@null"
+            android:title="热门话题"/>
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_easy_time"
+            android:icon="@null"
+            android:title="轻松一刻" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:title="草稿箱"
+            android:icon="@null"
+            android:id="@+id/nav_draft_box" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@null"
+            android:title="设置" />
+    </group>
+
+</menu>
