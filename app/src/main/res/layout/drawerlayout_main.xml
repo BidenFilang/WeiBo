@@ -8,13 +8,10 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/main_layout">
-        <ImageView
-            android:id="@+id/iv_center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/bg_banner_dialog"
-            />
+        android:id="@+id/main_layout"
+        >
+
+
     </FrameLayout>
     <!--
     app:menu: 设置menu xml布局
@@ -22,10 +19,10 @@
     android:layout_gravity="": 设置导航栏的位置，Left|right
     -->
     <android.support.design.widget.NavigationView
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/drawer_navigation"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         app:menu="@menu/drawer_menu"
         app:headerLayout="@layout/drawer_header" />
 </android.support.v4.widget.DrawerLayout>

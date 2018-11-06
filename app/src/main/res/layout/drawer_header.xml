@@ -3,23 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@mipmap/bg_banner_dialog"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/iv_profile_photo"
+        android:id="@+id/profile_photo"
         android:src="@mipmap/funny"
         android:padding="10dp"
         android:layout_marginTop="20dp"
+        android:layout_gravity="center"
         />
     <RelativeLayout
+        android:id="@+id/user_id"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:id="@+id/user_id"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/iv_profile_photo"
+        android:layout_below="@+id/profile_photo"
         >
         <TextView
             android:layout_width="50dp"
