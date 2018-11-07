@@ -32,10 +32,10 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         handler.postDelayed(runnable = new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
                 finish();
             }
-        }, 4000);//延迟三秒后发送handler信息
+        }, 4000);//延迟四秒后发送handler信息
 
     }
 
@@ -55,7 +55,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         switch(view.getId()) {
             case R.id.countdowm_tv:
                 //跳转到首页面
-                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
                 finish();
                 if (runnable != null) {
                     handler.removeCallbacks(runnable);
