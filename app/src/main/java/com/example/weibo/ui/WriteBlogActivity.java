@@ -21,7 +21,7 @@ public class WriteBlogActivity extends AppCompatActivity {
         initViews();
         toolbar.setBackgroundColor(getResources().getColor(R.color.color_toolbar));
         toolbar.setTitle("用户授权");
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.color_white));
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

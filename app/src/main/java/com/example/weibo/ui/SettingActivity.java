@@ -57,8 +57,8 @@ public class SettingActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager_setting);
         tablayout = (TabLayout) findViewById(R.id.tablayout_setting);
         tablayout.setBackgroundColor(getResources().getColor(R.color.color_toolbar));
-        tablayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.white));
-        tablayout.setTabTextColors(getResources().getColor(R.color.grey),getResources().getColor(R.color.white));
+        tablayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.color_white));
+        tablayout.setTabTextColors(getResources().getColor(R.color.color_grey),getResources().getColor(R.color.color_white));
     }
 
     @Override
