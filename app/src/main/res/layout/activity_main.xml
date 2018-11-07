@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_toolbar"
-
+            app:title="微博"
             />
         <ImageView
             android:id="@+id/iv_center"
@@ -26,6 +26,13 @@
 
             android:layout_gravity="center"
             />
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/funny"
+            android:layout_gravity="center_vertical|end"
+
+            android:id="@+id/fab"/>
     </FrameLayout>
     <!--主布局和侧滑菜单-->
     <android.support.design.widget.NavigationView

@@ -4,8 +4,7 @@
         <item
             android:id="@+id/nav_weibo"
             android:icon="@mipmap/ic_weibo_grey"
-            android:title="微博"
-            />
+            android:title="微博" />
         <item
             android:id="@+id/nav_notice"
             android:icon="@mipmap/ic_notification_gray_24"
@@ -30,12 +29,13 @@
             android:icon="@null"
             android:title="热门话题"/>
     </group>
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" >
         <item
             android:id="@+id/nav_easy_time"
             android:icon="@null"
             android:title="轻松一刻" />
     </group>
+
     <group android:checkableBehavior="single">
         <item
             android:title="草稿箱"

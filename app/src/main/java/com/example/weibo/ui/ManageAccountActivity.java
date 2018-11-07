@@ -1,6 +1,7 @@
 package com.example.weibo.ui;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,7 +34,13 @@ public class ManageAccountActivity extends AppCompatActivity {
         initView();
         StatusBarUtil.setColor(this,getResources().getColor(R.color.color_toolbar));
         toolbar.setBackgroundColor(getResources().getColor(R.color.color_toolbar));
+        toolbar.inflateMenu(R.menu.menu_manage_account);
+
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         //searchAccount();
         adapter=new AccountRecyclerView(new AccountRecyclerView.ItemClickListener() {
@@ -48,15 +55,24 @@ public class ManageAccountActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem menu) {
-
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+            case R.id.add_user:
+                startActivity(new Intent(ManageAccountActivity.this,WriteBlogActivity.class));
+                break;
+            default:
+                break;
+        }
         return true;
     }
 
-    private void searchAccount() {
-        SharedPreferences pref = getSharedPreferences("ACCOUNT",MODE_PRIVATE);
-        String name=pref.getString("name","");
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_manage_account,menu);
+        return true;
     }
 
     private void initView() {

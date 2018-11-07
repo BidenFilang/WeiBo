@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".ui.LoginActivity" />
-        <activity android:name=".ui.ManageAccountActivity"></activity>
+        <activity android:name=".ui.ManageAccountActivity" />
+        <activity android:name=".ui.WriteBlogActivity" />
+        <activity android:name=".ui.SettingActivity"></activity>
     </application>
 
 </manifest>
