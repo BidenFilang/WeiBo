@@ -12,7 +12,7 @@ import com.example.weibo.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button login_btn ;
+    private Button login_btn;
     private EditText account;
     private EditText password;
     @Override

@@ -39,7 +39,7 @@
             android:background="@drawable/shape_login"
             android:padding="5dp"
             android:hint="    输入账号"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textColor="@color/color_black"
             android:cursorVisible="false"
             />
@@ -52,7 +52,7 @@
             android:background="@drawable/shape_login"
             android:padding="5dp"
             android:hint="  输入密码"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textColor="@color/color_black"
             android:layout_marginTop="15dp"
             android:cursorVisible="false"/>
