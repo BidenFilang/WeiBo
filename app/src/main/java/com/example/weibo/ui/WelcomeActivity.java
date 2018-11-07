@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.weibo.MainActivity;
 import com.example.weibo.R;
+import com.jaeger.library.StatusBarUtil;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,6 +26,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        StatusBarUtil.setTransparent(this);
         initView();
         timer.schedule(task, 1000, 1000);//等待一秒 ，停顿一秒
         //正常情况下不点击跳过

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.weibo.R;
 import com.example.weibo.ui.ManageAccountActivity;
+import com.example.weibo.ui.OutlineSettingActivity;
 
 import butterknife.BindView;
 import butterknife.BindViews;
@@ -77,7 +78,7 @@ public class AdvanceFragment extends Fragment {
                 Toast.makeText(getActivity(),"流量控制",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_outline_setting:
-//                startActivity(new Intent(getActivity(),OutlineSettingActivity.class));
+                startActivity(new Intent(getActivity(),OutlineSettingActivity.class));
                 Toast.makeText(getActivity(),"离线设置",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_delay_post:

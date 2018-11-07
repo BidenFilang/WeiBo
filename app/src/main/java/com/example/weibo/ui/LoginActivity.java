@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.example.weibo.MainActivity;
 import com.example.weibo.R;
+import com.jaeger.library.StatusBarUtil;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        StatusBarUtil.setTransparent(this);
         init();
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
