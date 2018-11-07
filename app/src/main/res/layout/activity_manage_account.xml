@@ -15,7 +15,6 @@
         app:title="账号管理"
         app:titleTextColor="#ffffff"
         >
-
     </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView

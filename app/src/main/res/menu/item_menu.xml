@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/main_search"
+        android:title="搜索"
+        android:icon="@mipmap/ic_menu_search"
+        app:showAsAction="always"/>
     <group android:checkableBehavior="single">
         <item
             android:checkable="false"
             android:id="@+id/menu_write_blog"
-            android:title="写博客"/>
+            android:title="写博客"
+            app:showAsAction="never"/>
         <item
             android:checkable="false"
             android:id="@+id/menu_begin_quit"
-            android:title="开始离线"/>
+            android:title="开始离线"
+            app:showAsAction="never"/>
         <item
             android:checkable="false"
             android:id="@+id/menu_quit"
-            android:title="退出" />
+            android:title="退出"
+            app:showAsAction="never"/>
     </group>
 </menu>
