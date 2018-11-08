@@ -1,25 +1,25 @@
 package com.example.weibo;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.AnimationSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -71,6 +71,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         navView=(NavigationView)findViewById(R.id.nav_view);
         user_id = navView.getHeaderView(0).findViewById(R.id.user_id);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        iv_center = (ImageView) findViewById(R.id.iv_center);
+
+        final ObjectAnimator translation = ObjectAnimator.ofFloat(iv_center,"translationY",0,750,0,-750,0);
+        final ObjectAnimator rotate = ObjectAnimator.ofFloat(iv_center,"rotation",0f,360f);
+        translation.setRepeatCount(-1);
+        rotate.setRepeatCount(-1);
+        AnimatorSet animSet = new AnimatorSet();
+        animSet.playTogether(translation,rotate);
+        animSet.setDuration(5000);
+        animSet.start();
     }
 
     /**
@@ -131,6 +141,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         animator.setDuration(5000);
         animator.setRepeatCount(-1);
         animator.start();
+
+
     }
 
     @Override
@@ -170,7 +182,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.item_menu,menu);
@@ -184,9 +195,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(MainActivity.this, ManageAccountActivity.class));
                 break;
             case R.id.fab:
-                ObjectAnimator animator = ObjectAnimator.ofFloat(fab,"rotation",0f,45f);
-                animator.setDuration(750);
-                animator.start();
+//                ObjectAnimator animator = ObjectAnimator.ofFloat(fab,"rotation",0f,45f);
+//                animator.setDuration(750);
+//                animator.start();
+//                组合动画
+                final ObjectAnimator translation = ObjectAnimator.ofFloat(fab,"translationY",0,750,0,-750,0);
+                final ObjectAnimator rotate = ObjectAnimator.ofFloat(fab,"rotation",0f,360f);
+                final ObjectAnimator alpha = ObjectAnimator.ofFloat(fab,"alpha",1f,0f,1f);
+                translation.setDuration(5000);
+                rotate.setDuration(5000);
+                alpha.setDuration(5000);
+                translation.start();
+                translation.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        rotate.start();
+                    }
+                });
+                rotate.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        alpha.start();
+                    }
+                });
+                alpha.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        translation.start();
+                    }
+                });
                 break;
         }
     }
