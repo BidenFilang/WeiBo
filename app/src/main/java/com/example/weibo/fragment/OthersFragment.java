@@ -1,18 +1,29 @@
 package com.example.weibo.fragment;
 
+import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.weibo.R;
+import com.example.weibo.ui.WebViewActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.content.Context.CLIPBOARD_SERVICE;
+import static android.support.v4.content.ContextCompat.getSystemService;
 
 public class OthersFragment extends Fragment {
     @BindView(R.id.rl_about)
@@ -40,7 +51,24 @@ public class OthersFragment extends Fragment {
                 Toast.makeText(getActivity(),"关于",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_donate:
-                Toast.makeText(getActivity(),"捐赠开发者",Toast.LENGTH_SHORT).show();
+                ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText(null,"支付宝账号");
+                clipboard.setPrimaryClip(clipData);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("捐赠开发者");
+                builder.setMessage("如果你觉得源码对你有用，支付宝账号。。。已复制到黏贴板，捐赠一点碎银子");
+                builder.setNegativeButton("取消",null);
+                builder.setPositiveButton("打开支付宝", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String url = "https://github.com/";
+                        Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                        intent.putExtra("url",url);
+                        startActivity(intent);
+                    }
+                });
+                builder.show();
                 break;
             case R.id.rl_favorable:
                 Toast.makeText(getActivity(),"给我好评",Toast.LENGTH_SHORT).show();

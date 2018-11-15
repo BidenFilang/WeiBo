@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.weibo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.WelcomeActivity">
+        <activity
+            android:name=".ui.WelcomeActivity"
+            android:theme="@style/LauncherTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +28,13 @@
         <activity android:name=".ui.ManageAccountActivity" />
         <activity android:name=".ui.WriteBlogActivity" />
         <activity android:name=".ui.SettingActivity" />
-        <activity android:name=".ui.OutlineSettingActivity"></activity>
+        <activity android:name=".ui.OutlineSettingActivity" />
+        <activity android:name=".ui.WebViewActivity" />
+        <activity android:name=".test.TestActivity" />
+        <activity android:name=".test.RetrofitTestActivity" />
+        <activity android:name=".test.FoldingActivity" />
+        <activity android:name=".test.AsyncTestActivity" />
+        <activity android:name=".test.FingerPrintActivity"></activity>
     </application>
 
 </manifest>

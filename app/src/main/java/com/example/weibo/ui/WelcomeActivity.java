@@ -24,6 +24,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         StatusBarUtil.setTransparent(this);
