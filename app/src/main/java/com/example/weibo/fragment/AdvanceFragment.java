@@ -61,6 +61,7 @@ public class AdvanceFragment extends Fragment {
 
     }
 
+
     @OnClick({R.id.ll_account_manage,R.id.rl_notification_center,R.id.rl_data_control,
             R.id.rl_outline_setting,R.id.rl_delay_post,R.id.rl_inner_explorer,
             R.id.rl_memory_resident,R.id.rl_rotate_image })

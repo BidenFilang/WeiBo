@@ -5,23 +5,31 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.ViewDragHelper;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Display;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.SearchView;
@@ -41,6 +49,9 @@ import com.example.weibo.test.FoldingActivity;
 import com.example.weibo.ui.ManageAccountActivity;
 import com.example.weibo.ui.SettingActivity;
 import com.jaeger.library.StatusBarUtil;
+
+import java.lang.reflect.Field;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -67,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RecyclerView recyclerView_homepage;
     @BindView(R.id.right)
     FrameLayout right;
+
 
     private HomePageRecyclerView mAdapter;
 
@@ -142,7 +154,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+        //设置drawerLayout的滑动范围
 
+        setDrawerLeftEdgeSize(this, drawerLayout, 0.8f);
+
+    }
+
+    /**
+     * 抽屉滑动范围控制
+     * @param activity
+     * @param drawerLayout
+     * @param displayWidthPercentage 占全屏的份额0~1
+     */
+    private void setDrawerLeftEdgeSize(Activity activity, DrawerLayout drawerLayout, float displayWidthPercentage) {
+        if (activity == null || drawerLayout == null)
+            return;
+        try {
+            Field leftDraggerField = drawerLayout.getClass().getDeclaredField("mLeftDragger");
+            leftDraggerField.setAccessible(true);
+            ViewDragHelper leftDragger = (ViewDragHelper) leftDraggerField.get(drawerLayout);
+            Field edgeSizeField = leftDragger.getClass().getDeclaredField("mEdgeSize");
+            edgeSizeField.setAccessible(true);
+            int edgeSize = edgeSizeField.getInt(leftDragger);
+            DisplayMetrics dm = new DisplayMetrics();
+            activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+            edgeSizeField.setInt(leftDragger, Math.max(edgeSize, (int) (dm.widthPixels * displayWidthPercentage)));
+        } catch (NoSuchFieldException e) {
+            Log.e("NoSuchFieldException", e.getMessage().toString());
+        } catch (IllegalArgumentException e) {
+            Log.e("IllegalArgumentExce", e.getMessage().toString());
+        } catch (IllegalAccessException e) {
+            Log.e("IllegalAccessException", e.getMessage().toString());
+        }
     }
 
     private void updateWeibo() {
@@ -171,6 +214,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
 //        navView=(NavigationView)findViewById(R.id.nav_view);
         user_id = navView.getHeaderView(0).findViewById(R.id.user_id);
+
 //        fab = (FloatingActionButton) findViewById(R.id.fab);
 //        iv_center = (ImageView) findViewById(R.id.iv_center);
 //        sv_home = (SearchView) findViewById(R.id.sv_home);
